@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "ES5",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "noImplicitAny": false,
+    "module": "esnext",
+    "removeComments": false,
+    "sourceMap": false,
+    "lib": ["ESNext","DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@vue/*": ["./packages/*/src"]
+    }
+  },
+  "include": [
+    "packages/*/src"
+  ]
+}

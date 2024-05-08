@@ -1,0 +1,37 @@
+<!--
+ * @Author: allanma allanma@xiaoe-tech.com
+ * @Date: 2024-05-08 10:06:33
+ * @LastEditors: allanma allanma@xiaoe-tech.com
+ * @LastEditTime: 2024-05-08 14:39:39
+ * @FilePath: /vue-core-3.2.27/packages/vue/examples/index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const { reactive, effect } = Vue
+        const obj = reactive({
+            name: '张三'
+        })
+
+        effect(() => {
+            document.querySelector('#app').innerHTML = obj.name
+        })
+
+        setTimeout(() => {
+            obj.name = '李四'
+        }, 2000)
+    </script>
+</body>
+
+</html>
