@@ -1,0 +1,45 @@
+<!--
+ * @Description: 
+ * @Author: maxiaofei
+ * @Date: 2024-05-10 09:55:46
+ * @LastEditors: maxiaofei
+ * @LastEditTime: 2024-05-10 10:55:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="app"></div>
+    <script>
+        let data = {
+            msg: 'hello world!'
+		}
+
+		Object.defineProperty(data,'msg',{
+			get(target,key,receiver){
+				console.log('getter');
+				return 'hello'
+			},
+			set(target,key,value,receiver){
+				console.log('setter');
+				target[key] = value
+				return true
+			}
+		})
+		
+		function effect(){
+			document.querySelector('#app').innerHTML = data.msg
+		}
+
+		effect();
+    </script>
+</body>
+
+</html>
