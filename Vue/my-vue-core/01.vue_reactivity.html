@@ -1,0 +1,51 @@
+<!--
+ * @Author: allanma allanma@xiaoe-tech.com
+ * @Date: 2024-05-13 16:32:54
+ * @LastEditors: allanma allanma@xiaoe-tech.com
+ * @LastEditTime: 2024-05-13 18:09:41
+ * @FilePath: /my-vue-core/01.vue_reactivity.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        const targetMap = new WeakMap();
+
+        let reactive = (targetObj) => {
+            if (targetMap.get(targetObj)) {
+                return targetMap.get(targetObj)
+            }
+
+            const proxy = new Proxy(targetObj, {
+                get(target, key, receiver) {
+                    track(target, key)
+                    return Reflect.get(target, key, receiver)
+                },
+                set(target, key, value, receiver) {
+                    Reflect.set(target, key, value, receiver)
+                    trigger(target, key)
+                    return true
+                }
+            })
+
+            return proxy;
+        }
+
+        function trigger(target, key) {
+
+        }
+    </script>
+</body>
+
+</html>
